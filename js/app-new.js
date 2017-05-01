@@ -13,7 +13,7 @@ var siteSearch = angular.module("siteSearch", []);
 
 $.get( "http://www.plainview.io/supported_websites", function(websiteList) {
   // get list of supported domains
-  list = websiteList/map(function(website){
+  list = websiteList.map(function(website){
   	return website.domain;
   });
 });
