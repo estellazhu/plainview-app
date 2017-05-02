@@ -11,9 +11,11 @@ var cooldown = false;
 // Define a new module for our app
 var siteSearch = angular.module("siteSearch", []);
 
-$.get( "http://www.plainview.io/supportedDomains", function(websiteList) {
+$.get( "http://www.plainview.io/supported_websites", function(websiteList) {
   // get list of supported domains
-  list = websiteList;
+  list = websiteList.map(function(website){
+  	return website.domain;
+  });
 });
 
 // Create the instant search filter
@@ -42,7 +44,7 @@ siteSearch.controller('siteSearchController', function siteSearchController($sco
 	// The data model. These items would normally be requested via AJAX,
 	// but are hardcoded here for simplicity. See the next example for
 	// tips on using AJAX.
-  $.get( "http://www.plainview.io/supportedDomains", function(websiteList) {
+  $.get( "http://www.plainview.io/supported_websites", function(websiteList) {
     // get list of supported domains
     $scope.$apply(function(){
       $scope.items = websiteList;
